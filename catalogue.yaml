@@ -35,10 +35,6 @@
     ansbile.builtin.copy:
       src: /home/ec2-user/roboshop-ansible/catalogue.service
       dest: /etc/systemd/system/catalogue.service
-    ansible.builtin.systemd:
-      name: catalogue
-      state: present
-      enable: yes
   - name: copy mongo repor
     ansible.builtin.copy:
       src: /home/ec2-user/roboshop-ansible/mongo.repo
@@ -53,6 +49,10 @@
   - name: load data
     ansible.builtin.shell: mongosh --host "{{ MONGODB_HOST }}" </app/db/master-data.js
     when: mongooutput.stdout | int < 0
-
+  - name: enable catalogue
+    ansible.builtin.systemd:
+      name: catalogue
+      state: started
+      enable: yes
 
 
