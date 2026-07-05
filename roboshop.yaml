@@ -19,7 +19,7 @@
         project:  robishop
         component: "{{ item }}"
         Environment: "{{ envmnt }}-{{ item }}"
-    loop: "{{ instances }}""
+    loop: "{{ instances }}"
     register: ec2_output
   - name: print the output
     ansible.builtin.debug:
