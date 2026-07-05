@@ -29,7 +29,7 @@
       dest: /app
       remote_src: yes
   - name: install npm
-    community.general.npm
+    community.general.npm:
       path: /app
   - name: copy the catalogue service file
     ansbile.builtin.copy:
@@ -52,6 +52,7 @@
     register: mongooutput
   - name: load data
     ansible.builtin.shell: mongosh --host "{{ MONGODB_HOST }}" </app/db/master-data.js
-    when: mongooutput.stdout | int < 0  
+    when: mongooutput.stdout | int < 0
+
 
 
