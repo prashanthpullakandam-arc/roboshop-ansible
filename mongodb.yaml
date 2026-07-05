@@ -6,7 +6,7 @@
     ansible.builtin.copy:
       src: /home/ec2-user/roboshop-ansible/mongo.repo
       dest: /etc/yum.repos.d/mongo.repo
-  - name: install nginx
+  - name: install mongodb
     ansible.builtin.dnf:
       name: mongodb-org
       state: present
