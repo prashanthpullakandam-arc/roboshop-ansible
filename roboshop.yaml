@@ -35,3 +35,14 @@
       value: "{{ item.instances[0].private_ip_address }}"
       wait: true
     loop: "{{ ec2_output.results}}"
+  - name: create route 53 records Frontend
+    amazon.aws.route53:
+      state: present
+      zone: "{{ domanina }}"
+      record: "{{ domanina }}"   ##mongo-dev.ananthsolutions.online
+      type: A
+      ttl: 1
+      value: "{{ item.instances[0].public_ip }}"
+      wait: true
+    loop: "{{ ec2_output.results}}"
+    when: item.item == "Frontend"
