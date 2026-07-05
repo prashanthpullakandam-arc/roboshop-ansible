@@ -29,7 +29,7 @@
     amazon.aws.route53:
       state: present
       zone: "{{ domanina }}"
-      record: "{{ item.item }}-{{ envmnt }}.{{ domanina }} "   ##mongo-dev.ananthsolutions.online
+      record: "{{ item.item }}-{{ envmnt }}.{{ domanina }}"   ##mongo-dev.ananthsolutions.online
       type: A
       ttl: 1
       value: "{{ item.instances[0].private_ip_address }}"
