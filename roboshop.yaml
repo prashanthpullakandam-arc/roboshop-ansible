@@ -21,6 +21,6 @@
         Environment: "{{ envmnt }}-{{ item }}"
     loop: instances
     register: ec2_output
-    - name: print the output
-      ansible.builtin.register:
-        msg {{ ec2_output }}
+  - name: print the output
+    ansible.builtin.register:
+      msg {{ ec2_output }}
