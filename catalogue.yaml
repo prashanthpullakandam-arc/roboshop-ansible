@@ -3,7 +3,7 @@
   become: yes
   tasks:
   - name: enable nodejs 20
-    ansible.builtin.command:  dnf mondule enable nodejs:20
+    ansible.builtin.command:  dnf module enable nodejs:20
   - name: dnf install 
     ansible.builtin.dnf:
       name: nodejs
@@ -16,11 +16,11 @@
       home: /app
       comment: "roboshop system user"
   - name: create directory
-    ansible.bultin.file:
+    ansible.builtin.file:
       path: /app
       state: directory
   - name: download the application
-    ansible.builtin.geturl:
+    ansible.builtin.get_url:
       url: https://roboshop-artifacts.s3.amazonaws.com/catalogue-v3.zip  
       dest: /tmp/catalogue.zip
   - name: ansible unzip file
