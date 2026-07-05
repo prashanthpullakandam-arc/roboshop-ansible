@@ -4,8 +4,8 @@
   tasks:
   - name: moving files to server
     ansible.builtin.copy:
-    src: /home/ec2-user/roboshop-ansible/mongo.repo
-    dest: /etc/yum.repos.d/mongo.repo
+      src: /home/ec2-user/roboshop-ansible/mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
   - name: install nginx
     ansible.builtin.dnf:
       name: 
