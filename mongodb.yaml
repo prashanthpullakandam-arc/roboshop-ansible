@@ -8,8 +8,7 @@
       dest: /etc/yum.repos.d/mongo.repo
   - name: install nginx
     ansible.builtin.dnf:
-      name: 
-        - mongodb-org
+      name: mongodb-org
       state: present
   - name: updating the host details
     ansible.builtin.replace:
