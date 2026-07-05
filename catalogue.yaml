@@ -27,4 +27,31 @@
     ansible.builtin.unarchive:
       src:  /tmp/catalogue.zip
       dest: /app
+      remote_src: yes
+  - name: install npm
+    community.general.npm
+      path: /app
+  - name: copy the catalogue service file
+    ansbile.builtin.copy:
+      src: /home/ec2-user/roboshop-ansible/catalogue.service
+      dest: /etc/systemd/system/catalogue.service
+    ansible.builtin.systemd:
+      name: catalogue
+      state: present
+      enable: yes
+  - name: copy mongo repor
+    ansible.builtin.copy:
+      src: /home/ec2-user/roboshop-ansible/mongo.repo
+      dest: /etc/yum.repos.d/mongo.repo
+  - name: install mongodb
+    ansible.builtin.dnf:
+      name: mongodb-mongosh
+      state: present
+  - name: check if data exisit in mongodb
+    ansible.builtin.command:  mongosh --host "{{ MONGODB_HOST }}" --quiet  --eval 'db.getMongo().getDBNames().indexOf("catalogue")'
+    register: mongooutput
+  - name: load data
+    ansible.builtin.shell: mongosh --host "{{ MONGODB_HOST }}" </app/db/master-data.js
+    when: mongooutput.stdout | int < 0  
+
 
