@@ -1,6 +1,6 @@
 - name: create ec2 route 53 record
   hosts: all
-  connections: local
+  connection: local
   vars:
     secgrpid: "sg-084020e387d413aac"
     amid: "ami-0220d79f3f480ecf5"
