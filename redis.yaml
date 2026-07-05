@@ -21,7 +21,7 @@
   - name: state and enable
     ansible.builtin.systemd:
       name: redis
-      status: restarted
+      state: restarted
       enabled: yes
   
   
