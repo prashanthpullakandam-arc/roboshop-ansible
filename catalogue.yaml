@@ -32,7 +32,7 @@
     community.general.npm:
       path: /app
   - name: copy the catalogue service file
-    ansbile.builtin.copy:
+    ansible.builtin.copy:
       src: /home/ec2-user/roboshop-ansible/catalogue.service
       dest: /etc/systemd/system/catalogue.service
   - name: copy mongo repor
