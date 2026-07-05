@@ -32,6 +32,6 @@
       record: "{{ item.item }}-{{ envmnt }}.{{ domanina }} "   ##mongo-dev.ananthsolutions.online
       type: A
       ttl: 1
-      value: "{{ item.instances[0].private_ip_addresses }}"
+      value: "{{ item.instances[0].private_ip_addres }}"
       wait: true
     loop: "{{ ec2_output.results}}"
