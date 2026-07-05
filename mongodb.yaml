@@ -13,9 +13,9 @@
       state: present
   - name: updating the host details
     ansible.builtin.replace:
-    path: /etc/mongod.conf
-    regexp: "127.0.0.1"
-    replace: "0.0.0.0"
+      path: /etc/mongod.conf
+      regexp: "127.0.0.1"
+      replace: "0.0.0.0"
   - name: enable the mongodb    
     ansible.builtin.systemd:
       name: mongod
