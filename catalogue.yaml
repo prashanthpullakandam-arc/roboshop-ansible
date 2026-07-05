@@ -60,7 +60,7 @@
   - name: enable catalogue
     ansible.builtin.systemd:
       name: catalogue
-      state: started
+      state: restarted
       enabled: yes
 
 
