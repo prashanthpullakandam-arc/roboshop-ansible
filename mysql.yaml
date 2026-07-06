@@ -3,11 +3,11 @@
   become: yes
   tasks: 
   - name: install my sql dnf
-    ansible.builtin.dnf
+    ansible.builtin.dnf:
       name: mysql-server
       state: present
   - name: enable server
-    ansible.builtin.systemd
+    ansible.builtin.systemd:
       name: mysqld
       state: restarted
       enabled: yes
