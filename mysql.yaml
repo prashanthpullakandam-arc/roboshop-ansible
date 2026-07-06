@@ -1,0 +1,15 @@
+- name: create the mysql playbook
+  hosts: mysql
+  become: yes
+  tasks: 
+  - name: install my sql dnf
+    ansible.builtin.dnf
+      name: mysql-server
+      state: present
+  - name: enable server
+    ansible.builtin.systemd
+      name: mysqld
+      state: restarted
+      enabled: yes
+  - name: create a root password
+    ansible.builtin.command: mysql_secure_installation --set-root-pass RoboShop@1
