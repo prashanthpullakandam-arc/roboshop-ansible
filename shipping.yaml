@@ -23,7 +23,7 @@
   - name: add the directory
     ansible.builtin.file:
       path: /app
-      state: direcotry
+      state: directory
   - name: delete the downloaded file
     ansible.builtin.file:
       path: /tmp/shipping.zip
