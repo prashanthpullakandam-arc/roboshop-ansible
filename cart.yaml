@@ -40,7 +40,7 @@
     community.general.npm:
       path: /app
   - name: copy the file
-    ansible.builtin.templet:
+    ansible.builtin.template:
      src: /home/ec2-user/roboshop-ansible/cart.service  
      dest: /etc/systemd/system/cart.service
   - name: restart the service
