@@ -49,7 +49,14 @@
   - name: copy systrm ctl sertvie
     ansible.builtin.template:
       src: /home/ec2-user/roboshop-ansible/shipping.service
-      dest: /etc/systemd/system/shipping.service    
+      dest: /etc/systemd/system/shipping.service
+  - name: install dependencie
+    ansible.builtin.pip:
+      name: "{{ item }}"
+      executable: pip3.9
+    loop:
+    - cryptography
+    - PyMySQL        
   
   - name: import shipping data
     community.mysql.mysql_db:
