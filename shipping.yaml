@@ -74,7 +74,8 @@
   - name: create system ctl service
     ansible.builtin.systemd:
       name: shipping
-      status: restarted
+      state: restarted
       enabled: yes
       daemon_reload: yes
+      
 
