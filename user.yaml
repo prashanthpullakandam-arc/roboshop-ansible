@@ -32,7 +32,7 @@
       url: "https://roboshop-artifacts.s3.amazonaws.com/user-v3.zip"
       dest: /tmp/user.zip
   - name: unarchive the file
-    ansible.builtin.unarchive:
+    ansible.builtin.unarchiv:
       src:  /tmp/user.zip
       dest: /app
       remote_src: yes 
