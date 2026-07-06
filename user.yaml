@@ -33,7 +33,7 @@
       dest: /tmp/user.zip
   - name: unarchive the file
     ansible.builtin.unarchiv:
-      src:  /tmp/user.zip
+      src: /tmp/user.zip
       dest: /app
       remote_src: yes 
   - name: install npm
