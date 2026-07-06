@@ -38,7 +38,7 @@
       remote_src: yes 
   - name: install npm
     community.general.npm:
-      src: /app
+      path: /app
   - name: copy the file
     ansible.builtin.copy:
       src: /home/ec2-user/roboshop-ansible/user.service  
