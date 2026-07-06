@@ -37,7 +37,7 @@
       dest: /app
       remote_src: yes 
   - name: install npm
-    communitry.general.npm:
+    community.general.npm:
       src: /app
   - name: copy the file
     ansible.builtin.copy:
