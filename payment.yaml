@@ -43,7 +43,7 @@
       requirements: requirements.txt
       executable: pip3.9
   - name: copy the service
-    ansible.builtin.templete:
+    ansible.builtin.template:
       src: payment.service
       dest: /etc/systemd/system/payment.service
   - name: start the payment service
