@@ -1,39 +1,50 @@
-- name: front end playbook for yaml
+- name: configure frontend server
   hosts: frontend
   become: yes
-  tasks: 
-  - name: enable nginx 24
-    ansible.builtin.command: dnf module enable nginx:1.24 -y  
-  - name: deploy nginx
+  tasks:
+  - name: enable nginx 1.24
+    ansible.builtin.command: dnf module enable nginx:1.24 -y
+
+  - name: install nginx
     ansible.builtin.dnf:
       name: nginx
       state: present
-  - name: rmeove the directory
+
+  - name: Remove the entire directory
     ansible.builtin.file:
       path: /usr/share/nginx/html
       state: absent
-  - name: rmeove the directory
+
+  - name: create html directory
     ansible.builtin.file:
       path: /usr/share/nginx/html
-      state: directory    
-  - name: remove the file
-    ansible.builtin.file:
-      path: /tmp/frontend.zip
-      state: absent
-  - name: download file
+      state: directory
+
+  - name: download frontend
     ansible.builtin.get_url:
-      url: 'https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip'
+      url: https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip 
       dest: /tmp/frontend.zip
-  - name: unarchive the file  
+
+  - name: unarchieve frontend
     ansible.builtin.unarchive:
       src: /tmp/frontend.zip
       dest: /usr/share/nginx/html
       remote_src: yes
-  - name: copy the file
+
+  - name: remove default nginx
+    ansible.builtin.file:
+      state: absent
+      path: /etc/nginx/nginx.conf
+
+  - name: copy nginx.conf
     ansible.builtin.template:
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
-  - name: enable and start service
-    ansible.builtin.systemd:
-      name: nginx 
+
+  - name: resatrt nginx
+    ansible.builtin.service:
+      name: nginx
       state: restarted
+      enabled: yes
+
+  
