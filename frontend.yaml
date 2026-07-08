@@ -1,5 +1,5 @@
 - name: front end playbook for yaml
-  hosts:  frontend
+  hosts: frontend
   become: yes
   tasks: 
   - name: enable nginx 24
