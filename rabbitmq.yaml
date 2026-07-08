@@ -13,7 +13,7 @@
   - name: enable and start rabbitmq
     ansible.builtin.systemd:
       name: rabbitmq-server
-      state: present
+      state: restarted
       enabled: yes
   - name: enable the user
     community.rabbitmq.rabbitmq_user:
