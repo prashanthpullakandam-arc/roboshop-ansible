@@ -20,10 +20,6 @@
     ansible.builtin.file:
       path: /tmp/frontend.zip
       state: absent
-  - name: create location
-    ansible.builtin.file:
-      path: /app
-      state: directory
   - name: download file
     ansible.builtin.get_url:
       url: 'https://roboshop-artifacts.s3.amazonaws.com/frontend-v3.zip'
@@ -31,7 +27,7 @@
   - name: unarchive the file  
     ansible.builtin.unarchive:
       src: /tmp/frontend.zip
-      dest: /app
+      dest: /usr/share/nginx/html
       remote_src: yes
   - name: copy the file
     ansible.builtin.template:
